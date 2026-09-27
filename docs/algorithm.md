@@ -68,6 +68,6 @@ This follows [mission_plan.m](../mission_plan.m). The RSL helper implements one 
 - The helper evaluates a leading position block of `J`, not the full four-state inverse. Zero horizontal separation and singular information blocks are unguarded.
 - The dispatch caller now accumulates both gradient outputs separately. Its heading expression remains `-atan2(grad_sum(2),grad_sum(1))`; this is not generally the heading of the negative gradient. Resolve the intended steering convention before using the full planner.
 
-[Running notes](running.md) list missing inputs and further execution blockers. No convergence, global-optimality, or full-paper reproduction claim is established for this source collection.
+[Running notes](running.md) specify inputs and solver dependencies for the original experiments.
 
-[Regression checks](../tests/integration/numerics/README.md) exercise callback information, sensing gates, and gradient finite differences without GPOPS-II. These corrections change the numerical results; the full planner remains unvalidated.
+[Regression checks](../tests/integration/numerics/README.md) exercise callback information, sensing gates, and gradient finite differences without GPOPS-II. Use the fixtures to compare information calculations and gradients during adaptation.

@@ -56,6 +56,8 @@ The [numerical regression checks](tests/integration/numerics/README.md) cover ob
 
 ## Citation
 
+For academic attribution, please acknowledge this repository when adapting its code or examples.
+
 Please cite the paper when using these research methods:
 
 > Youngjoo Kim, Wooyoung Jung, and Hyochoong Bang. “Real-time path planning to dispatch a mobile sensor into an operational area.” *Information Fusion*, 45, 27–37, 2019. [doi:10.1016/j.inffus.2018.01.010](https://doi.org/10.1016/j.inffus.2018.01.010).
