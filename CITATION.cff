@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use these research methods, please cite the paper in preferred-citation."
+type: software
+title: "mobile-sensor"
+repository-code: "https://github.com/rhymesg/mobile-sensor"
+authors:
+  - name: "mobile-sensor contributors"
+keywords:
+  - informative path planning
+  - mobile sensor
+  - Fisher information matrix
+  - D-optimality
+  - MATLAB
+preferred-citation:
+  type: article
+  title: "Real-time path planning to dispatch a mobile sensor into an operational area"
+  authors:
+    - family-names: Kim
+      given-names: Youngjoo
+    - family-names: Jung
+      given-names: Wooyoung
+    - family-names: Bang
+      given-names: Hyochoong
+  journal: "Information Fusion"
+  volume: "45"
+  start: 27
+  end: 37
+  year: 2019
+  month: 1
+  doi: "10.1016/j.inffus.2018.01.010"
