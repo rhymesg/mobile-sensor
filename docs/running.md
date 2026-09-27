@@ -21,7 +21,7 @@ The example uses base MATLAB and deterministic synthetic inputs; it requires no 
 
 Expected final message: `Reference example passed.` The RSL helper also prints its `p`, `t`, and `L` intermediates because its assignments have no semicolons.
 
-These are analytical helper fixtures, not measured paper results. MATLAB, Octave, GPOPS-II, and SNOPT execution have not been verified in this environment.
+These are analytical helper fixtures, not measured paper results.
 
 ## Experiment dependencies
 

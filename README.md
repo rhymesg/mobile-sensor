@@ -48,7 +48,7 @@ This example exercises reusable geometry helpers; it does not reproduce the pape
 
 ## Implementation scope
 
-The collection provides standalone geometry helpers and source references for information gradients and optimal-control callbacks. Full dispatch experiments require [GPOPS-II with SNOPT](https://www.gpops2.com/resources/gpops2UsersGuide.pdf), missing MAT files/helpers, and resolution of the remaining [implementation differences](docs/algorithm.md#implementation-differences); see [running notes](docs/running.md). Native MATLAB execution remains unverified.
+The collection provides standalone geometry helpers and source references for information gradients and optimal-control callbacks. Full dispatch experiments require [GPOPS-II with SNOPT](https://www.gpops2.com/resources/gpops2UsersGuide.pdf), missing MAT files/helpers, and resolution of the remaining [implementation differences](docs/algorithm.md#implementation-differences); see [running notes](docs/running.md).
 
 ### Checks
 
