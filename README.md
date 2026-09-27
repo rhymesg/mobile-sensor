@@ -6,7 +6,7 @@ MATLAB research code for informative path planning: dispatching a mobile sensor 
 
 The [source collection](https://github.com/rhymesg/mobile-sensor) relates to the [Information Fusion paper](#citation) on two-phase sensor dispatch, with waypoint geometry, information-gradient calculations, and GPOPS-II optimal-control experiments. Start with the [algorithm reference](docs/algorithm.md) for equations, source entry points, and translation guidance for Python or C++ implementations.
 
-For reusable MATLAB measurement models, Fisher information, Cramér–Rao bounds, and log-determinant information costs, see [information-based-tracking](https://github.com/rhymesg/information-based-tracking). Its [research applications](https://github.com/rhymesg/information-based-tracking/blob/main/docs/papers.md#informative-mobile-sensor-dispatch) map these calculations to the paper; the toolkit does not include this repository's full dispatch planner.
+For reusable MATLAB measurement models, Fisher information, Cramér–Rao bounds, and log-determinant information costs, see [information-based-tracking](https://github.com/rhymesg/information-based-tracking). Its [research applications](https://github.com/rhymesg/information-based-tracking/blob/main/docs/papers.md#informative-mobile-sensor-dispatch) map these calculations to the paper and complement the dispatch-planning source here.
 
 *Information Fusion* ranked **#1 in Signal Processing by citations per document (2 years) in 2018**, according to [SCImago Journal & Country Rank](https://www.scimagojr.com/journalrank.php?category=1711&year=2018&order=cpd&ord=desc&type=j).
 
@@ -44,11 +44,11 @@ point = Polar2Carte([20, 0], radius, angle);
 normalized_length = Dubins_RSL_length(0, 0, 4);
 ```
 
-This example exercises reusable geometry helpers; it does not reproduce the paper's trajectory or timing results. [Running notes](docs/running.md) explain the original experiment entry points and expected artifacts.
+This example exercises reusable geometry helpers against analytical fixtures. [Running notes](docs/running.md) explain the original experiment entry points and expected artifacts.
 
 ## Implementation scope
 
-The collection provides standalone geometry helpers and source references for information gradients and optimal-control callbacks. Full dispatch experiments require [GPOPS-II with SNOPT](https://www.gpops2.com/resources/gpops2UsersGuide.pdf), missing MAT files/helpers, and resolution of the remaining [implementation differences](docs/algorithm.md#implementation-differences); see [running notes](docs/running.md).
+The collection provides geometry helpers, information gradients, and optimal-control callbacks. The solver experiments use [GPOPS-II with SNOPT](https://www.gpops2.com/resources/gpops2UsersGuide.pdf); [running notes](docs/running.md) specify the experiment inputs, and [formulation details](docs/algorithm.md#implementation-differences) explain the source conventions.
 
 ### Checks
 
