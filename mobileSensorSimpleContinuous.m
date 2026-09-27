@@ -43,14 +43,14 @@ the_dot = u2;
 J_dot = zeros(numcol,9);
 for k = 1:1:numcol
     
-    dist = norm(X2(k,1) - OC(1), X2(k,2) - OC(2));
+    dist = norm([X2(k,1) - OC(1), X2(k,2) - OC(2)]);
     if (dist < RC)
         e = XT2(k,1) - X2(k,1);
         n = XT2(k,2) - X2(k,2);
         u = 0 - alt;
 
         H = [n/(e^2+n^2), -e/(e^2+n^2), 0;
-              -e*u/(e^2+n^2+u^2)/sqrt(e^2+n^2), -u*n/(e^2+n^2+u^2)/sqrt(e^2+n^2), 1/sqrt(e^2+n^2);
+              -e*u/(e^2+n^2+u^2)/sqrt(e^2+n^2), -u*n/(e^2+n^2+u^2)/sqrt(e^2+n^2), sqrt(e^2+n^2)/(e^2+n^2+u^2);
               e/sqrt(e^2+n^2+u^2), n/sqrt(e^2+n^2+u^2), u/sqrt(e^2+n^2+u^2)];
 
         R = diag([sig_R(1)^2 sig_R(2)^2 sig_R(3)^2]);

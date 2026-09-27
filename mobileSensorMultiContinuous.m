@@ -45,7 +45,7 @@ for k = 1:1:numcol
         u = 0 - alt;
 
         H = [n/(e^2+n^2), -e/(e^2+n^2), 0;
-              -e*u/(e^2+n^2+u^2)/sqrt(e^2+n^2), -u*n/(e^2+n^2+u^2)/sqrt(e^2+n^2), 1/sqrt(e^2+n^2);
+              -e*u/(e^2+n^2+u^2)/sqrt(e^2+n^2), -u*n/(e^2+n^2+u^2)/sqrt(e^2+n^2), sqrt(e^2+n^2)/(e^2+n^2+u^2);
               e/sqrt(e^2+n^2+u^2), n/sqrt(e^2+n^2+u^2), u/sqrt(e^2+n^2+u^2)];
 
         J = H'*invR*H/4;
@@ -88,7 +88,7 @@ for k = 1:1:numcol
             u = 0 - alt;
 
             H = [n/(e^2+n^2), -e/(e^2+n^2), 0;
-                  -e*u/(e^2+n^2+u^2)/sqrt(e^2+n^2), -u*n/(e^2+n^2+u^2)/sqrt(e^2+n^2), 1/sqrt(e^2+n^2);
+                  -e*u/(e^2+n^2+u^2)/sqrt(e^2+n^2), -u*n/(e^2+n^2+u^2)/sqrt(e^2+n^2), sqrt(e^2+n^2)/(e^2+n^2+u^2);
                   e/sqrt(e^2+n^2+u^2), n/sqrt(e^2+n^2+u^2), u/sqrt(e^2+n^2+u^2)];
 
             J = H'*invR*H/4;
@@ -108,7 +108,7 @@ for k = 1:1:numcol
             u = 0 - alt;
 
             H = [n/(e^2+n^2), -e/(e^2+n^2), 0;
-                  -e*u/(e^2+n^2+u^2)/sqrt(e^2+n^2), -u*n/(e^2+n^2+u^2)/sqrt(e^2+n^2), 1/sqrt(e^2+n^2);
+                  -e*u/(e^2+n^2+u^2)/sqrt(e^2+n^2), -u*n/(e^2+n^2+u^2)/sqrt(e^2+n^2), sqrt(e^2+n^2)/(e^2+n^2+u^2);
                   e/sqrt(e^2+n^2+u^2), n/sqrt(e^2+n^2+u^2), u/sqrt(e^2+n^2+u^2)];
 
             J = H'*invR*H;

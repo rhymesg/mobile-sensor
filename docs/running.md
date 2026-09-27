@@ -47,11 +47,9 @@ The default multitarget driver writes `result.mat`, not either filename loaded b
 
 ## Known execution and interpretation issues
 
-- `mobileSensorSimpleContinuous.m` calls `norm(dx,dy)`: MATLAB treats the second argument as a norm order, not a second coordinate ([MathWorks reference](https://www.mathworks.com/help/matlab/ref/norm.html)). This does not calculate the intended circular distance and may error.
-- `mobileSensorMultiEndpoint.m` declares its function as `mobileSensorSimpleEndpoint`; the filename and declaration disagree.
 - The multitarget setup exposes `L` but hard-codes three targets in derivatives and the terminal determinant product. Changing `L` alone is unsupported.
 - The entry-angle sweep evaluates 15 angles at increments of one hundredth of its preset interval; it does not search the complete interval or implement the paper's online gradient-descent iteration.
 - `main_gpops_simple_backup.m` contains different state guesses, a 15-element event bound against a 16-element callback event, and phase-2 plotting times read from phase 1. It is an earlier experiment, not the recommended driver.
-- [Algorithm differences](algorithm.md#implementation-differences) cover gradient weighting, derivatives, objective scaling, and information-state dimensions. Establish the intended scientific behavior before repairing them.
+- [Algorithm differences](algorithm.md#implementation-differences) cover remaining steering, objective-scaling, and information-state differences. The callback derivatives, distance calculation, endpoint function name, and gradient interface have been corrected.
 
 Scripts containing `clear`, `clear all`, or `close all` overwrite the current experiment workspace or figures; run them in a fresh session. The `graph_GD*` and `graph_SGD` scripts plot preset timing expressions; their constants are not newly measured benchmarks.

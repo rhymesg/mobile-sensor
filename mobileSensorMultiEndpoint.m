@@ -1,4 +1,4 @@
-function [ output ] = mobileSensorSimpleEndpoint( input )
+function [ output ] = mobileSensorMultiEndpoint( input )
 % Multitarget terminal objective; DOI: 10.1016/j.inffus.2018.01.010.
 % See docs/algorithm.md, docs/running.md, and README.md#citation.
 

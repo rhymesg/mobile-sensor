@@ -42,6 +42,8 @@ This example exercises reusable geometry helpers; it does not reproduce the pape
 
 ## Development
 
+Run the [callback information and gradient regression checks](tests/integration/numerics/README.md) before changing the corresponding numerical routines.
+
 The example contains numerical assertions for basic helper contracts. There is no automated validation of the complete planner; the original [test.m](test.m) is an exploratory Riccati calculation without assertions.
 
 For a useful issue report, provide the source revision or archive identifier, MATLAB and solver versions, script name, parameter changes, required input files, and observed output. Report problems through [GitHub Issues](https://github.com/rhymesg/mobile-sensor/issues).

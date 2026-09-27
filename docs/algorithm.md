@@ -51,7 +51,7 @@ This follows [mission_plan.m](../mission_plan.m). The RSL helper implements one 
 | `mat2vec(A,'row')` | Concatenates rows into a row vector |
 | `mat2vec(A,'col')` | Concatenates columns into a column vector |
 | `vec2mat(v,r,c,mode)` | Inverse packing for exactly `r*c` entries; both helpers fall back to row mode for other mode strings |
-| `control_grad2d(p_sen,p_tar,R,J)` | Three-coordinate positions, `3-by-3` weight matrix, information matrix with an invertible leading `2-by-2` block; returns separate scalar outputs `[ux,uy]` |
+| `control_grad2d(p_sen,p_tar,R,J)` | Three-coordinate positions, `3-by-3` positive-definite measurement covariance matrix, information matrix with an invertible leading `2-by-2` block; returns separate scalar outputs `[ux,uy]` |
 
 - Geometry uses metres, seconds, radians, and counterclockwise headings from the positive x-axis; positions use an east/north/up convention.
 - Multitarget GPOPS states are `[sensor_x,sensor_y,heading,target_xy_pairs,row_packed_J1,J2,J3]`; with three targets each row has 36 elements.
@@ -64,9 +64,10 @@ This follows [mission_plan.m](../mission_plan.m). The RSL helper implements one 
 
 - The GPOPS callbacks accumulate measurement information only; they omit the full dissipation terms and use `3-by-3` matrices, whereas the dispatch comparison uses `4-by-4` position/velocity information matrices.
 - Endpoint objectives use `log2`; the paper and dispatch comparison use natural logarithms. The single-target endpoint also omits the paper's one-half factor.
-- `control_grad2d` multiplies by its supplied `R`; its caller passes covariance, whereas the published measurement gain uses inverse covariance.
-- The helper's `dHdy(1,2)` is `x/(x^2+y^2)^2`; differentiating its own `H(1,2)=-x/(x^2+y^2)` gives `2*x*y/(x^2+y^2)^2`.
+- `control_grad2d` now uses inverse measurement covariance via linear solves and the corrected derivative `dHdy(1,2)=2*x*y/(x^2+y^2)^2`. The GPOPS callbacks use the corrected elevation derivative `rho/(rho^2+u^2)`.
 - The helper evaluates a leading position block of `J`, not the full four-state inverse. Zero horizontal separation and singular information blocks are unguarded.
-- The dispatch caller requests one scalar output and adds it to both gradient coordinates; its heading expression is `-atan2(grad_sum(2),grad_sum(1))`. Validate both conventions before translating the steering law.
+- The dispatch caller now accumulates both gradient outputs separately. Its heading expression remains `-atan2(grad_sum(2),grad_sum(1))`; this is not generally the heading of the negative gradient. Resolve the intended steering convention before using the full planner.
 
 [Running notes](running.md) list missing inputs and further execution blockers. No convergence, global-optimality, or full-paper reproduction claim is established for this source collection.
+
+[Regression checks](../tests/integration/numerics/README.md) exercise callback information, sensing gates, and gradient finite differences without GPOPS-II. These corrections change the numerical results; the full planner remains unvalidated.

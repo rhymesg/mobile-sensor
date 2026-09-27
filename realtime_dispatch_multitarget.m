@@ -577,12 +577,12 @@ for angidx = 1:1:15;
         Ig3(k+1) = -0.5*log(det(J3));
        
         grad_sum = [0 0];
-        grad = control_grad2d([Xg(k,1) Xg(k,2) alt], [XT(k,1) XT(k,2) 0], R, J1);
-        grad_sum = grad_sum + grad;
-        grad = control_grad2d([Xg(k,1) Xg(k,2) alt], [XT(k,3) XT(k,4) 0], R, J2);
-        grad_sum = grad_sum + grad;
-        grad = control_grad2d([Xg(k,1) Xg(k,2) alt], [XT(k,5) XT(k,6) 0], R, J3);
-        grad_sum = grad_sum + grad;
+        [grad_x, grad_y] = control_grad2d([Xg(k,1) Xg(k,2) alt], [XT(k,1) XT(k,2) 0], R, J1);
+        grad_sum = grad_sum + [grad_x, grad_y];
+        [grad_x, grad_y] = control_grad2d([Xg(k,1) Xg(k,2) alt], [XT(k,3) XT(k,4) 0], R, J2);
+        grad_sum = grad_sum + [grad_x, grad_y];
+        [grad_x, grad_y] = control_grad2d([Xg(k,1) Xg(k,2) alt], [XT(k,5) XT(k,6) 0], R, J3);
+        grad_sum = grad_sum + [grad_x, grad_y];
 
         grad_sum;
         psi_cmd = -atan2(grad_sum(2), grad_sum(1));   
